@@ -33,8 +33,19 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "fit-text",
-  "author": "Thierry",
+  "name": "@grooviz/fit-text",
+  "author": "GROOVIZ",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GROOVIZ/fit-text.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GROOVIZ/fit-text/issues"
+  },
+  "homepage": "https://github.com/GROOVIZ/fit-text#readme",
+  "directories": {
+    "example": "example"
+  },
   "module": "dist/fit-text.esm.js",
   "size-limit": [
     {
