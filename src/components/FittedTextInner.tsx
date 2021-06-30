@@ -33,7 +33,7 @@ const FittedTextInner: FC<Props> = ({
         <div
           style={{
             position: 'absolute',
-            height: 100 * height,
+            height: fullHeight,
             bottom: `${fullOffset}px`,
           }}
         >
