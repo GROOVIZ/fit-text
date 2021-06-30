@@ -28,12 +28,13 @@ const FittedTextInner: FC<Props> = ({
           width: '100%',
           height: fullHeight,
           bottom: `${-fullOffset + offset}px`,
+          overflow: 'hidden',
         }}
       >
         <div
           style={{
             position: 'absolute',
-            height: fullHeight,
+            height: 100 * fullHeight,
             bottom: `${fullOffset}px`,
           }}
         >
@@ -41,7 +42,7 @@ const FittedTextInner: FC<Props> = ({
             style={{
               display: 'inline-block',
               height: '100%',
-              width: '0',
+              width: 0,
               content: '',
             }}
           ></div>
