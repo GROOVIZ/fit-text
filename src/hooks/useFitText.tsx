@@ -85,16 +85,6 @@ const useFitText = ({
   const offset = metrics.offsets[bottomMetric as keyof FontOffsets] * fontSize;
   const fullOffset = metrics.offsets.descent * fontSize;
 
-  console.log('METRICS: ', metrics);
-  console.log('RESULT: ', {
-    fontSize,
-    width,
-    height,
-    fullHeight,
-    offset,
-    fullOffset,
-  });
-
   return { fontSize, width, height, fullHeight, offset, fullOffset };
 };
 

@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -44,7 +44,8 @@
   },
   "homepage": "https://github.com/GROOVIZ/fit-text#readme",
   "directories": {
-    "example": "example"
+    "example": "example",
+    "test": "test"
   },
   "module": "dist/fit-text.esm.js",
   "size-limit": [
@@ -70,6 +71,9 @@
     "typescript": "^4.3.4"
   },
   "dependencies": {
-    "@grooviz/font-metrics": "^0.0.1"
-  }
+    "@grooviz/font-metrics": "^0.0.2",
+    "react-resize-detector": "^6.7.3",
+    "rooks": "^5.0.2"
+  },
+  "description": "> Custom Hook and Component to Fit Text in your React & NextJS Apps"
 }

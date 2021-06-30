@@ -1,18 +1,15 @@
-import React from 'react'
-import { FC } from 'react'
+import React from 'react';
+import { FC } from 'react';
 
 type Props = {
-  text: string
-  fontSize: number
-  width: number
-  height: number
-  fullHeight: number
-  offset: number
-  fullOffset: number
-  fontFamily: string
-  fontStyle: string
-  fontWeight: string
-}
+  text: string;
+  fontSize: number;
+  width: number;
+  height: number;
+  fullHeight: number;
+  offset: number;
+  fullOffset: number;
+};
 
 const FittedTextInner: FC<Props> = ({
   text,
@@ -22,10 +19,7 @@ const FittedTextInner: FC<Props> = ({
   fullHeight,
   offset,
   fullOffset,
-  fontFamily,
-  fontStyle
-}: // fontWeight
-Props) => {
+}: Props) => {
   return (
     <div style={{ position: 'relative', width, height }}>
       <div
@@ -33,15 +27,14 @@ Props) => {
           position: 'absolute',
           width: '100%',
           height: fullHeight,
-          bottom: `${-fullOffset + offset}px`
-          // overflow: 'hidden'
+          bottom: `${-fullOffset + offset}px`,
         }}
       >
         <div
           style={{
             position: 'absolute',
             height: 100 * height,
-            bottom: `${fullOffset}px`
+            bottom: `${fullOffset}px`,
           }}
         >
           <div
@@ -49,15 +42,13 @@ Props) => {
               display: 'inline-block',
               height: '100%',
               width: '0',
-              content: ''
+              content: '',
             }}
           ></div>
           <span
             style={{
-              fontFamily,
-              fontStyle,
               fontSize: `${fontSize}px`,
-              verticalAlign: 'baseline'
+              verticalAlign: 'baseline',
             }}
           >
             {text}
@@ -65,7 +56,7 @@ Props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FittedTextInner
+export default FittedTextInner;

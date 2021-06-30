@@ -4,6 +4,7 @@ import { FitResult } from '../types/FitResult';
 import { TextAlign } from '../types/TextAlign';
 import { TextDirection } from '../types/TextDirection';
 import FittedTextWrapper from './FittedTextWrapper';
+import { useResizeDetector } from 'react-resize-detector';
 
 type Props = {
   text: string;
@@ -30,77 +31,56 @@ const FittedText: FC<Props> = ({
   options = {},
   onFit = (_r: FitResult) => {},
 }) => {
-  // if (typeof window === "undefined") {
-  //   return <div>{text}</div>;
-  // }
-
-  // const [sizedByParent, setSizedByParent] = useState(false)
-  // const [onlyWidth, setOnlyWidth] = useState(false)
-  // const [onlyHeight, setOnlyHeight] = useState(false)
-  const [maxWidth, setMaxWidth] = useState(0);
-  const [maxHeight, setMaxHeight] = useState(0);
   const [fontFamily, setFontFamily] = useState('');
   const [fontStyle, setFontStyle] = useState('');
   const [fontWeight, setFontWeight] = useState('');
 
-  const ref = useRef<HTMLDivElement>(null);
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { width: maxWidth, height: maxHeight } = useResizeDetector({
+    targetRef,
+  });
 
   useEffect(() => {
-    if (!ref.current) return;
-    // setSizedByParent(!width && !height)
-    // setOnlyWidth(!!width && !height)
-    // setOnlyHeight(!width && !!height)
-    setMaxWidth(ref.current.offsetWidth);
-    setMaxHeight(ref.current.offsetHeight);
-    const divStyles = window.getComputedStyle(ref.current!);
+    const divStyles = window.getComputedStyle(targetRef.current!);
     setFontFamily(divStyles.getPropertyValue('font-family'));
     setFontStyle(divStyles.getPropertyValue('font-style'));
     setFontWeight(divStyles.getPropertyValue('font-weight'));
-  }, [width, height, ref.current?.offsetWidth, ref.current?.offsetHeight]);
+    console.log(
+      divStyles.getPropertyValue('font-family'),
+      divStyles.getPropertyValue('font-style'),
+      divStyles.getPropertyValue('font-weight')
+    );
+  }, [targetRef.current]);
 
-  // console.log(
-  //   text,
-  //   maxWidth,
-  //   maxHeight,
-  //   fontFamily,
-  //   fontStyle,
-  //   fontWeight,
-  //   topMetric,
-  //   bottomMetric,
-  //   align,
-  //   verticalAlign,
-  //   direction
-  //   // fitResult,
-  //   // setFitResult
-  // )
-
-  console.log('W/H: ', width, height);
+  console.log('YOP');
 
   return (
     <section
-      ref={ref}
+      ref={targetRef}
       style={{
         width: !!width ? width : '100%',
         height: !!height ? height : '100%',
       }}
     >
-      <FittedTextWrapper
-        {...{
-          text,
-          topMetric,
-          bottomMetric,
-          align,
-          verticalAlign,
-          direction,
-          maxWidth,
-          maxHeight,
-          fontFamily,
-          fontStyle,
-          fontWeight,
-          options,
-          onFit,
-        }}
-      />
+      {!!maxWidth && !!maxHeight && (
+        <FittedTextWrapper
+          {...{
+            text,
+            topMetric,
+            bottomMetric,
+            align,
+            verticalAlign,
+            direction,
+            maxWidth,
+            maxHeight,
+            fontFamily,
+            fontStyle,
+            fontWeight,
+            options,
+            onFit,
+          }}
+        />
+      )}
     </section>
   );
 };
