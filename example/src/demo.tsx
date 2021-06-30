@@ -181,8 +181,8 @@ export default function Demo() {
                 verticalAlign={fitTextParameters.verticalAlign}
                 direction={fitTextParameters.direction}
                 options={{
-                  // fontStyle: generalParameters.fontStyle,
-                  // fontWeight: generalParameters.fontWeight,
+                  fontStyle: fontStyle,
+                  fontWeight: fontWeight,
                   capHeight: metricsParameters.offsetChars['upper'],
                   xHeight: metricsParameters.offsetChars['lower'],
                   descent: metricsParameters.offsetChars['descent'],
