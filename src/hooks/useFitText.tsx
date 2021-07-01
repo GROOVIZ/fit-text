@@ -78,6 +78,7 @@ const useFitText = ({
     width = maxWidth;
     height = maxWidth / textRatio;
   }
+  fontSize = Math.floor(fontSize);
   const fullHeight =
     (height * (metrics.offsets.descent - metrics.offsets.ascent)) /
     (metrics.offsets[bottomMetric as keyof FontOffsets] -
