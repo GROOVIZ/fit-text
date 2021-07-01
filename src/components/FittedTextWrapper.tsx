@@ -40,27 +40,22 @@ type TransformData = {
 };
 
 const getTransformData: {
-  [key: string]: (
-    width: number,
-    height: number,
-    fontSize: number
-  ) => TransformData;
+  [key: string]: (width: number, height: number) => TransformData;
 } = {
-  right: (_w, _h, fs) => ({
-    transform: `rotate(0deg) scale(${fs / Math.ceil(fs)})`,
+  right: (_w, _h) => ({
+    transform: `rotate(0deg)`,
     origin: 'center',
   }),
-  bottom: (_w, h, fs) => ({
-    transform: `rotate(90deg) scale(${fs / Math.ceil(fs)})`,
+  bottom: (_w, h) => ({
+    transform: `rotate(90deg)`,
     origin: `${h / 2}px center`,
   }),
-  left: (_w, _h, fs) => ({
-    transform: `rotate(180deg) scale(${fs / Math.ceil(fs)})`,
+  left: (_w, _h) => ({
+    transform: `rotate(180deg)`,
     origin: 'center',
   }),
-  top: (w, h, fs) => ({
-    transform: `translateY(${w - h}px) rotate(-90deg) scale(${fs /
-      Math.ceil(fs)})`,
+  top: (w, h) => ({
+    transform: `translateY(${w - h}px) rotate(-90deg)`,
     origin: `${h / 2}px center`,
   }),
 };
@@ -105,7 +100,7 @@ const FittedTextWrapper: FC<Props> = ({
   useEffect(() => {
     onFit && onFit({ fontSize, width, height, fullHeight, offset, fullOffset });
   }, [fontSize, width, height, fullHeight, offset, fullOffset]);
-  const transformData = getTransformData[direction](width, height, fontSize);
+  const transformData = getTransformData[direction](width, height);
   return (
     <div
       style={{
@@ -128,20 +123,27 @@ const FittedTextWrapper: FC<Props> = ({
             transform: transformData.transform,
           }}
         >
-          <FittedTextInner
-            {...{
-              text,
-              fontSize: Math.ceil(fontSize),
-              width: (width * Math.ceil(fontSize)) / fontSize,
-              height: (height * Math.ceil(fontSize)) / fontSize,
-              fullHeight,
-              offset,
-              fullOffset,
-              // fontFamily,
-              // fontStyle,
-              // fontWeight
+          <div
+            style={{
+              transformOrigin: 'top left',
+              transform: `scale(${fontSize / Math.ceil(fontSize)})`,
             }}
-          />
+          >
+            <FittedTextInner
+              {...{
+                text,
+                fontSize: Math.ceil(fontSize),
+                width: (width * Math.ceil(fontSize)) / fontSize,
+                height: (height * Math.ceil(fontSize)) / fontSize,
+                fullHeight,
+                offset,
+                fullOffset,
+                // fontFamily,
+                // fontStyle,
+                // fontWeight
+              }}
+            />
+          </div>{' '}
         </div>
       </div>
     </div>
