@@ -40,16 +40,27 @@ type TransformData = {
 };
 
 const getTransformData: {
-  [key: string]: (width: number, height: number) => TransformData;
+  [key: string]: (
+    width: number,
+    height: number,
+    fontSize: number
+  ) => TransformData;
 } = {
-  right: (_w, _h) => ({ transform: 'rotate(0deg)', origin: 'center' }),
-  bottom: (_w, h) => ({
-    transform: 'rotate(90deg)',
+  right: (_w, _h, fs) => ({
+    transform: `rotate(0deg) scale(${fs / Math.ceil(fs)})`,
+    origin: 'center',
+  }),
+  bottom: (_w, h, fs) => ({
+    transform: `rotate(90deg) scale(${fs / Math.ceil(fs)})`,
     origin: `${h / 2}px center`,
   }),
-  left: (_w, _h) => ({ transform: 'rotate(180deg)', origin: 'center' }),
-  top: (w, h) => ({
-    transform: `translateY(${w - h}px) rotate(-90deg)`,
+  left: (_w, _h, fs) => ({
+    transform: `rotate(180deg) scale(${fs / Math.ceil(fs)})`,
+    origin: 'center',
+  }),
+  top: (w, h, fs) => ({
+    transform: `translateY(${w - h}px) rotate(-90deg) scale(${fs /
+      Math.ceil(fs)})`,
     origin: `${h / 2}px center`,
   }),
 };
@@ -94,7 +105,7 @@ const FittedTextWrapper: FC<Props> = ({
   useEffect(() => {
     onFit && onFit({ fontSize, width, height, fullHeight, offset, fullOffset });
   }, [fontSize, width, height, fullHeight, offset, fullOffset]);
-  const transformData = getTransformData[direction](width, height);
+  const transformData = getTransformData[direction](width, height, fontSize);
   return (
     <div
       style={{
@@ -120,9 +131,9 @@ const FittedTextWrapper: FC<Props> = ({
           <FittedTextInner
             {...{
               text,
-              fontSize,
-              width,
-              height,
+              fontSize: Math.ceil(fontSize),
+              width: (width * Math.ceil(fontSize)) / fontSize,
+              height: (height * Math.ceil(fontSize)) / fontSize,
               fullHeight,
               offset,
               fullOffset,
