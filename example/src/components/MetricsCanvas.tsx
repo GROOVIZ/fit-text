@@ -39,6 +39,7 @@ const MetricsCanvas: FC<Props> = ({
     tittle: metricsParameters.offsetChars['tittle'],
     baseline: metricsParameters.offsetChars['baseline'],
   });
+  console.log('CANVAS FONT METRICS: ', metrics);
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 

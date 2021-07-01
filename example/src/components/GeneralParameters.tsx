@@ -45,6 +45,7 @@ const GeneralParametersForm: FC<Props> = ({
                 value={params.fontFamily}
                 onChange={e => setFontFamily(e.target.value)}
               >
+                <option value="SlimJoe">SlimJoe</option>
                 <option value="Catamaran">Catamaran</option>
                 <option value="Arial">Arial</option>
                 <option value="Staatliches">Staatliches</option>

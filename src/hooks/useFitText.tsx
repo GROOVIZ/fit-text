@@ -12,9 +12,6 @@ type Props = {
   fontWeight?: string;
   maxWidth: number;
   maxHeight: number;
-  singleLine?: boolean;
-  min?: number;
-  max?: number;
   topMetric?: string;
   bottomMetric?: string;
   options?: FontMetricsOptions;
@@ -27,9 +24,6 @@ const useFitText = ({
   fontWeight = '',
   maxWidth,
   maxHeight,
-  // singleLine,
-  // min,
-  // max,
   topMetric = 'top',
   bottomMetric = 'bottom',
   options,
@@ -42,6 +36,8 @@ const useFitText = ({
     origin: 'baseline',
     ...options,
   });
+
+  console.log(text, 'FONT METRICS: ', metrics);
 
   const containerRatio = maxWidth / maxHeight;
 
@@ -80,6 +76,7 @@ const useFitText = ({
   }
   const fullHeight =
     (height * (metrics.offsets.descent - metrics.offsets.ascent)) /
+    //(height * (metrics.offsets.bottom - metrics.offsets.top)) /
     (metrics.offsets[bottomMetric as keyof FontOffsets] -
       metrics.offsets[topMetric as keyof FontOffsets]);
   const offset = metrics.offsets[bottomMetric as keyof FontOffsets] * fontSize;
