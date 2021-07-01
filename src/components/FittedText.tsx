@@ -45,14 +45,7 @@ const FittedText: FC<Props> = ({
     setFontFamily(divStyles.getPropertyValue('font-family'));
     setFontStyle(divStyles.getPropertyValue('font-style'));
     setFontWeight(divStyles.getPropertyValue('font-weight'));
-    console.log(
-      divStyles.getPropertyValue('font-family'),
-      divStyles.getPropertyValue('font-style'),
-      divStyles.getPropertyValue('font-weight')
-    );
   }, [targetRef.current]);
-
-  console.log('YOP');
 
   return (
     <section
