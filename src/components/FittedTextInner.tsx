@@ -26,7 +26,7 @@ const FittedTextInner: FC<Props> = ({
         style={{
           position: 'absolute',
           width: '100%',
-          height: fullHeight,
+          height: 1.01 * fullHeight,
           bottom: `${-fullOffset + offset}px`,
           overflow: 'hidden',
         }}
