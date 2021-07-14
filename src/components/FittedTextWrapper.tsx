@@ -127,7 +127,6 @@ const FittedTextWrapper: FC<Props> = ({
             style={{
               transformOrigin: 'top left',
               transform: `scale(1)`, //${fontSize / Math.ceil(fontSize)})`,
-              backgroundColor: 'blue',
             }}
           >
             <FittedTextInner
