@@ -126,18 +126,18 @@ const FittedTextWrapper: FC<Props> = ({
           <div
             style={{
               transformOrigin: 'top left',
-              transform: `scale(1)`, //${fontSize / Math.ceil(fontSize)})`,
+              transform: `scale(${fontSize / Math.ceil(fontSize)})`,
             }}
           >
             <FittedTextInner
               {...{
                 text,
-                fontSize,
-                // fontSize: Math.ceil(fontSize),
-                width,
-                height,
-                // width: (width * Math.ceil(fontSize)) / fontSize,
-                // height: (height * Math.ceil(fontSize)) / fontSize,
+                // fontSize,
+                fontSize: Math.ceil(fontSize),
+                // width,
+                // height,
+                width: (width * Math.ceil(fontSize)) / fontSize,
+                height: (height * Math.ceil(fontSize)) / fontSize,
                 fullHeight,
                 offset,
                 fullOffset,
