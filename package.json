@@ -71,7 +71,7 @@
     "typescript": "^4.3.4"
   },
   "dependencies": {
-    "@grooviz/font-metrics": "^0.0.3",
+    "@grooviz/font-metrics": "^0.0.9",
     "react-resize-detector": "^6.7.3",
     "rooks": "^5.0.2"
   },

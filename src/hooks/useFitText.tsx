@@ -51,6 +51,7 @@ const useFitText = ({
     (metrics.offsets[bottomMetric as keyof FontOffsets] -
       metrics.offsets[topMetric as keyof FontOffsets]);
   const textRatio = textWidth / textHeight;
+  console.log('RATIO: ', textRatio);
 
   let fontSize: number;
   let width: number;
@@ -59,7 +60,8 @@ const useFitText = ({
   if (textRatio <= containerRatio) {
     // Text can fit inside Container at maxHeight
     fontSize =
-      (0.995 * maxHeight) /
+      // (0.995 * maxHeight) /
+      maxHeight /
       (metrics.offsets[bottomMetric as keyof FontOffsets] -
         metrics.offsets[topMetric as keyof FontOffsets]);
     width = maxHeight * textRatio;
@@ -67,7 +69,8 @@ const useFitText = ({
   } else {
     // Text has to be shrinked
     fontSize =
-      (0.995 * maxWidth) /
+      // (0.995 * maxWidth) /
+      maxWidth /
       (textRatio *
         (metrics.offsets[bottomMetric as keyof FontOffsets] -
           metrics.offsets[topMetric as keyof FontOffsets]));

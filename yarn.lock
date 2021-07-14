@@ -917,10 +917,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@grooviz/font-metrics@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@grooviz/font-metrics/-/font-metrics-0.0.1.tgz#72249eabfd79627c86e47609d0668fa2ada32076"
-  integrity sha512-8MDzq7/BnsSWvuhTrI6c8Ejg1yl97uCOIMuJQmQH13tTxQg2RlAICaIsCHkgD744oGJYdfZteHj88V+zHaRICQ==
+"@grooviz/font-metrics@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@grooviz/font-metrics/-/font-metrics-0.0.9.tgz#cdbef9f51c54aa00ca41edcee465a54471157124"
+  integrity sha512-i8llqI/wU4VL2YnzcMnz0aDXh1258ROxpFh6qbx1KZrWzNWYUX6siDihn5JMKbhvAgAjJdxbK4tfIIQhdkdumQ==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
