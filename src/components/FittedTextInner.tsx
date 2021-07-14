@@ -21,20 +21,21 @@ const FittedTextInner: FC<Props> = ({
   fullOffset,
 }: Props) => {
   return (
-    <div style={{ position: 'relative', width, height, overflow: 'hidden' }}>
+    <div style={{ position: 'relative', width, height }}>
       <div
         style={{
           position: 'absolute',
           width: '100%',
-          height: fullHeight,
-          bottom: `${-fullOffset + offset}px`,
+          height: fullHeight + 4,
+          bottom: `${-fullOffset + offset - 2}px`,
+          overflow: 'hidden',
         }}
       >
         <div
           style={{
             position: 'absolute',
             height: 100 * fullHeight,
-            bottom: `${fullOffset}px`,
+            bottom: `${fullOffset + 2}px`,
           }}
         >
           <div
